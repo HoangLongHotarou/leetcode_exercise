@@ -78,6 +78,39 @@ public class Sorting {
         return solution;
     }
 
+    public static void quickSort(int []arr, int L, int R){
+        //Stop the recursion
+        if(L>=R){
+            return;
+        }
+        // get the key
+        int key = arr[(L+R)/2];
+        // partiton follow key
+        int pivot = partition(arr, L, R, key);
+        //div half the array ==> repeat
+        quickSort(arr, L, pivot-1);
+        quickSort(arr, pivot, R);
+    }
+
+    // return pivot value
+    public static int partition(int[] arr, int L,int R, int key){
+        int iL = L;
+        int iR = R;
+        while(iL<=iR){
+            // if iL find element >= key then swapping
+            while(arr[iL]<key)iL++;
+            // if iR find elemt <= key then swapping
+            while(arr[iR]>key)iR--;
+            // swapping 2 element but which incorrect the position
+            if(iL<=iR){
+                int temp = arr[iL];
+                arr[iL++] = arr[iR];
+                arr[iR--] = temp;
+            }
+        }
+        return iL;
+    }
+
     public static void main(String[] args) {
         int[] n = { 2, 3, 4, 5, 1, 2, 2, 3, 191, 22, 12 };
         // bubbleSort(n);
@@ -86,6 +119,8 @@ public class Sorting {
         // System.out.println(Arrays.toString(n));
         // int[] s = sortArray(n);
         System.out.println(Arrays.toString(n));
-        System.out.println(Arrays.toString(sortArray(n)));
+        // System.out.println(Arrays.toString(sortArray(n)));
+        quickSort(n, 0, n.length-1);
+        System.out.println(Arrays.toString(n));
     }
 }
