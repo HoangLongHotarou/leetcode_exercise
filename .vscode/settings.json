@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "exercise",
+        "_4_BinarySearch",
+        "_3_recursion",
+        "_2_sort",
+        "_1_array"
+    ]
+}
